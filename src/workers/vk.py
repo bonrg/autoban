@@ -8,8 +8,8 @@ from workers.autoban_worker import AutobanWorker
 
 if __name__ == '__main__':
     # WORKER_PROXY = os.environ.setdefault('WORKER_PROXY', None) or None
-    WORKER_BOT_LOGIN = '77774736147'
-    WORKER_BOT_PASSWORD = 'oSTcQhr3H3s'
+    WORKER_BOT_LOGIN = ''
+    WORKER_BOT_PASSWORD = ''
     if not WORKER_BOT_LOGIN and WORKER_BOT_PASSWORD:
         raise Exception('No bot arguments are passed')
     bot = VkBot(login=WORKER_BOT_LOGIN, password=WORKER_BOT_PASSWORD)
