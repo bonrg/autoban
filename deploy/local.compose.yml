@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+
+  autoban_rabbit:
+    image: "rabbitmq:3-management"
+    restart: always
+    env_file: .envs/.local
+    ports:
+      - "0.0.0.0:12055:5672"
+      - "0.0.0.0:12056:15672"
+    hostname: "rabbit_kamikadze"
+    volumes:
+      - /docker_volumes/dev/autoban/rabbitdata:/var/lib/rabbitmq
+
+  # workers
+  #  -------------------------------------------------------------------------------------------------------------------
+  url_autoban_dispenser: &worker
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    restart: always
+    depends_on:
+      - autoban_rabbit
+    env_file: .envs/.local
+    command: python /src/workers/dispenser_worker.py
+
+  vk_autoban:
+    <<: *worker
+    command: python /src/workers/vk.py
+
+
