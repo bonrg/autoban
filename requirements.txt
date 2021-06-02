@@ -8,6 +8,6 @@ requests==2.22.0
 selenium==3.141.0
 selenium-wire==1.0.10
 six==1.12.0
-urllib3==1.25.6
+urllib3==1.26.5
 vk-api==11.5.1
 zayats==0.3.3
